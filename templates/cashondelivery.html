@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block body %}
+<style>
+    .payment-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+    }
+    
+    button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    button:hover {
+        background-color: #0056b3;
+    }
+    .payment-container img {
+        max-width: 100%;
+        height: auto;
+        margin-top: 10px; /* Adjust margin as needed */
+    }
+</style>
+
+<div class="payment-container">
+    <h2>Payment Information</h2>
+    <p>Please pay the delivery person in cash upon receipt of your order.</p>
+    <img src="{{ request.GET.image }}" alt="Food Item Image">
+    <h3>{{ request.GET.name }}</h3>
+    <p><b>Price: ₹{{ request.GET.price }}</b></p>
+  
+    <label for="price">Price:</label>
+    <input type="text" id="price" name="price" value="{{ request.GET.price }}" readonly>
+
+    <a href="/cashpay"><button onclick="confirmPayment()">Confirm Payment</button></a></div>
+
+<script>
+    // Function to confirm payment
+    function confirmPayment() {
+        // You can add additional logic here such as sending confirmation to the server
+        alert("Your payment is confirmed. Please wait for your order to be delivered.");
+        // You can also redirect the user to another page after confirming payment
+        // window.location.href = "thankyou.html";
+    }
+</script>
+
+{% endblock body %}

@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block body %}
+<style>
+    /* Styles for the form */
+    .delivery-form {
+        max-width: 90%; /* Adjusted for smaller screens */
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+        margin-top: 6vw;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: calc(100% - 10px); /* Adjust width */
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    /* Adjusted layout for state, city, and landmark */
+    .horizontal-layout {
+        display: flex;
+        flex-wrap: wrap; /* Ensure items wrap on smaller screens */
+        justify-content: space-between;
+    }
+
+    /* Adjust spacing between fields */
+    .horizontal-layout .form-group {
+        width: calc(48% - 10px); /* Adjust width for smaller screens */
+        margin-bottom: 0; /* Remove bottom margin */
+    }
+
+    .submit-button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        width: 100%; /* Ensure button spans full width */
+    }
+
+    .submit-button:hover {
+        background-color: #0056b3;
+    }
+    
+    .error-message {
+        color: red;
+    }
+</style>
+
+<div class="delivery-form">
+    <h2>Enter Your Details for Cash on Delivery</h2>
+    <form action={% url "cashpay" %} method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="{{request.user}}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="product-name">Product Name:</label>
+            <input type="text" id="product-name" name="name" value="{{ request.session.name }}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="price">Price in Rupees:</label>
+            <input type="text" id="price" name="price" value="{{ price }}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <span id="email-error" class="error-message"></span>
+        </div>
+        <div class="horizontal-layout">
+            <div class="form-group">
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state" required>
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+            <div class="form-group">
+                <label for="landmark">Landmark:</label>
+                <input type="text" id="landmark" name="landmark" required>
+            </div>
+        </div>
+        <button type="submit" class="submit-button">Place Order</button>
+    </form>
+</div>
+
+{% endblock body %}

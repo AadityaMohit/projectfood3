@@ -1,0 +1,338 @@
+{% extends "base.html" %}
+{% block body %}
+<style>
+    /* Styles for milk menu */
+    @keyframes fadeInOut {
+        0% { opacity: 0; }
+        25% { opacity: 1; }
+        75% { opacity: 1; }
+        100% { opacity: 0; }
+    }
+
+    .welcome-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .welcome-message {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-right: 20px;
+        animation: fadeInOut 4s linear infinite;
+    }
+    .animating-image {
+        width: 50px;
+        height: 50px;
+        background: url('/static/animating_image.gif') center center/contain no-repeat;
+        animation: spin 6s linear 1;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    .animating-image img {
+        width: 100%; /* Adjust the image width as needed */
+        height: auto; /* Maintain aspect ratio */
+    }
+    
+    .milk-menu {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .milk-dish {
+        width: 60%;
+    }
+
+    .side-cards {
+        width: 30%;
+    }
+
+    /* milk dish section */
+    .milk-dish .milk {
+        margin-bottom: 10px; /* Reduced margin */
+    }
+
+    .milk-dish .milk img {
+        width: 40%;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        margin-left: 8vw;
+    }
+.side-cards{
+    width:87%
+}
+    /* Card for dish description */
+    .side-cards .card {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 8px; /* Further reduced padding */
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        margin-bottom: 200px; /* Reduced margin */
+    }
+
+    .side-cards .card h3 {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 8px; /* Further reduced margin */
+    }
+
+    .side-cards .card p {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 8px; /* Further reduced margin */
+    }
+    .order-button {
+        display: block;
+        width: 50%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        margin-top: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-align: center;
+    }
+
+    .order-button:hover {
+        background-color: #dc2100;
+    }
+    
+    .litti-chokha {
+        width: 70%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px;
+    }
+
+    .litti-chokha img {
+        width: 20%;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .lines {
+        width: 45%;
+        margin-left: 20px;
+    }
+
+    .lines p {
+        margin-bottom: 10px;
+    }
+
+
+    @media only screen and (max-width: 600px) {
+        .milk-dish .milk img{
+width:100%;
+        }
+
+        .side-cards .card{
+            margin-bottom: 15px;
+        }
+        }
+     
+        .litti-chokha {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .litti-chokha img {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+
+
+            h3{
+                margin-left: 8vw;
+            }     
+
+        
+
+    @media only screen and (max-width: 900px) {
+        .milk-dish .milk img {
+            width: 86%;
+            margin-left: 0vw;
+            margin-top: 5vw;
+        }
+        }
+        h3{
+            margin-left: 8vw;
+        }
+</style>
+<div class="welcome-container">
+    <div class="welcome-message">
+        Welcome to Pure Veg Dishes
+    </div>
+    <div class="animating-image"><img src="/static/i8.jpeg" alt="Animatimg Image"></div>
+</div>
+
+<div class="milk-menu">
+    <div class="milk-dish">
+        <div class="milk">
+            <img src="/static/i8.jpeg" alt="Matar milk">
+            <h3>Matar milk</h3>
+            <p><b>Price: 500 rupees</b></p>
+        </div>
+        <div class="milk">
+            <img src="/static/i7.jpeg" alt="Shahi milk">
+            <h3>Shahi milk</h3>
+            <p><b>Price: 500 rupees</b></p>
+        </div>
+    </div>
+
+    <div class="side-cards">
+        <div class="card">
+            <h3>Milk sweet</h3>
+            <p><b>Price: 500 rupees</b></p>
+            <p>Matar milk is a delicious North Indian dish consisting of milk (cottage cheese) and green peas cooked in a creamy tomato-based gravy.</p>
+          
+             <button class="order-button" onclick="window.location.href='/cashondelivery?name=Milk+sweet&price=500&image=/static/i8.jpeg'">Order Now</button>
+        </div>
+        <div class="card">
+            <h3>Shahi milk</h3>
+            <p><b>Price: 400 rupees</b></p>
+            <p>Shahi milk is a rich and creamy dish made with milk (cottage cheese) cooked in a luxurious gravy made of cashews, cream, and aromatic spices.</p>
+            
+             <button class="order-button" onclick="window.location.href='/cashondelivery?name=Shahi+Milk&price=40&image=/static/m1.jpeg'">Order Now</button>
+        </div>
+    </div>
+</div>
+<div class="milk-menu">
+    <div class="milk-dish">
+        <div class="milk">
+            <img src="/static/m1.jpeg" alt="Matar milk">
+            <h3>Matar milk</h3>
+            <p><b>Price: 500 rupees</b></p>
+        </div>
+        <div class="milk">
+            <img src="/static/m2.jpeg" alt="Shahi milk">
+            <h3>Shahi milk</h3>
+            <p><b>Price: 500 rupees</b></p>
+        </div>
+    </div>
+
+    <div class="side-cards">
+        <div class="card">
+            <p><b>Price: 500 rupees</b></p>
+            <p>Matar milk is a delicious North Indian dish consisting of milk (cottage cheese) and green peas cooked in a creamy tomato-based gravy.</p>
+          
+            <button class="order-button" onclick="window.location.href='/cashondelivery?name=Shahi+Milk&price=40&image=/static/m1.jpeg'">Order Now</button>
+        </div>
+        <div class="card">
+            <h3>Shahi milk</h3>
+            <p><b>Price: 500 rupees</b></p>
+            <p>Shahi milk is a rich and creamy dish made with milk (cottage cheese) cooked in a luxurious gravy made of cashews, cream, and aromatic spices.</p>
+            
+            <button class="order-button" onclick="window.location.href='/cashondelivery?name=Shahi+Milk&price=40&image=/static/m1.jpeg'">Order Now</button>
+        </div>
+    </div>
+</div>
+<div class="milk-menu">
+    <div class="milk-dish">
+        <div class="milk">
+            <img src="/static/i8.jpeg" alt="Matar milk">
+            <h3>Matar milk</h3>
+            <p><b>Price: 500 rupees</b></p>
+        </div>
+        <div class="milk">
+            <img src="/static/i7.jpeg" alt="Shahi milk">
+            <h3>Shahi milk</h3>
+            <p><b>Price: 500 rupees</b></p>
+        </div>
+    </div>
+
+    <div class="side-cards">
+        <div class="card">
+            <h3>Matar milk</h3>
+            <p><b>Price: 500 rupees</b></p>
+            <p>Matar milk is a delicious North Indian dish consisting of milk (cottage cheese) and green peas cooked in a creamy tomato-based gravy.</p>
+          
+            <button class="order-button" onclick="window.location.href='/cashondelivery?name=Shahi+Milk&price=40&image=/static/m1.jpeg'">Order Now</button>
+        </div>
+        <div class="card">
+            <h3>Shahi milk</h3>
+            <p><b>Price: 500 rupees</b></p>
+            <p>Shahi milk is a rich and creamy dish made with milk (cottage cheese) cooked in a luxurious gravy made of cashews, cream, and aromatic spices.</p>
+            
+            <button class="order-button" onclick="window.location.href='/cashondelivery?name=Shahi+Milk&price=40&image=/static/m1.jpeg'">Order Now</button>
+        </div>
+    </div>
+</div>
+<div class="milk-menu">
+    <div class="milk-dish">
+        <div class="milk">
+            <img src="/static/m1.jpeg" alt="Matar milk">
+            <h3>Matar milk</h3>
+            <p><b>Price: 500 rupees</b></p>
+        </div>
+        <div class="milk">
+            <img src="/static/m4.jpeg" alt="Shahi milk">
+            <h3>Shahi milk</h3>
+        </div>
+    </div>
+
+    <div class="side-cards">
+        <div class="card">
+            <h3>Matar milk</h3>
+            <p><b>Price: 500 rupees</b></p>
+            <p>Matar milk is a delicious North Indian dish consisting of milk (cottage cheese) and green peas cooked in a creamy tomato-based gravy.</p>
+          
+            <button class="order-button" onclick="window.location.href='/cashondelivery?name=Shahi+Milk&price=40&image=/static/m1.jpeg'">Order Now</button>
+        </div>
+        <div class="card">
+            <h3>Shahi milk</h3>
+            <p><b>Price: 500 rupees</b></p>
+            <p>Shahi milk is a rich and creamy dish made with milk (cottage cheese) cooked in a luxurious gravy made of cashews, cream, and aromatic spices.</p>
+            
+            <button class="order-button" onclick="window.location.href='/cashondelivery?name=Shahi+Milk&price=40&image=/static/m1.jpeg'">Order Now</button>
+        </div>
+    </div>
+</div>
+<div class="milk-menu">
+    <div class="milk-dish">
+        <div class="milk">
+            <img src="/static/i8.jpeg" alt="Matar milk">
+            <h3>Matar milk</h3>
+            <p><b>Price: 500 rupees</b></p>
+        </div>
+        <div class="milk">
+            <img src="/static/i7.jpeg" alt="Shahi milk">
+            <h3>Shahi milk</h3>
+            <p><b>Price: 500 rupees</b></p>
+        </div>
+    </div>
+
+    <div class="side-cards">
+        <div class="card">
+            <h3>Matar milk</h3>
+            <p><b>Price: 500 rupees</b></p>
+            <p>Matar milk is a delicious North Indian dish consisting of milk (cottage cheese) and green peas cooked in a creamy tomato-based gravy.</p>
+          
+            <button class="order-button" onclick="window.location.href='/cashondelivery?name=Shahi+Milk&price=40&image=/static/m1.jpeg'">Order Now</button>
+        </div>
+        <div class="card">
+            <h3>Shahi milk</h3>
+            <p><b>Price: 500 rupees</b></p>
+            <p>Shahi milk is a rich and creamy dish made with milk (cottage cheese) cooked in a luxurious gravy made of cashews, cream, and aromatic spices.</p>
+            
+            <button class="order-button" onclick="window.location.href='/cashondelivery?name=Shahi+Milk&price=40&image=/static/m1.jpeg'">Order Now</button>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

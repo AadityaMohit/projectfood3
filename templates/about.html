@@ -1,0 +1,148 @@
+<title>About</title>
+{% extends "base.html" %}
+{% block body %}
+<style>
+  /* Container for About Page */
+  .about-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Title */
+  .about-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  /* Description */
+  .about-description {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    text-align: justify;
+    margin-bottom: 30px;
+  }
+
+  /* Team Members */
+  .team-members {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Individual Member */
+  .team-member {
+    width: 200px;
+    margin: 20px;
+    text-align: center;
+  }
+
+  .team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+
+  .team-member h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 5px;
+  }
+
+  .team-member p {
+    font-size: 1rem;
+    color: #555;
+  }
+  .mission-values {
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 2px solid #ddd;
+  }
+
+  .mission-values h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .mission-values ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .mission-values li {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 10px;
+  }
+
+  /* History */
+  .history {
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 2px solid #ddd;
+  }
+
+  .history h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .history p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    text-align: justify;
+  }
+</style>
+<div class="about-container">
+  <h1 class="about-title">About Us</h1>
+  <p class="about-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et quam vitae arcu mollis ultricies. Nulla facilisi. Duis non sapien varius, commodo nulla vitae, venenatis ligula. Aliquam consequat, nisi vel rhoncus tempus, elit mi euismod urna, vel efficitur mauris dui eu magna.</p>
+  
+  <h2>Our Mission and Values</h2>
+  <ul class="mission-values">
+    <li><strong>Mission:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+    <li><strong>Values:</strong></li>
+    <li>- Quality: Providing the highest quality food and service to our customers.</li>
+    <li>- Innovation: Constantly innovating and improving to meet the needs of our customers.</li>
+    <li>- Sustainability: Committed to sustainable practices in all aspects of our business.</li>
+  </ul>
+
+  <div class="history">
+    <h2>Our History</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et quam vitae arcu mollis ultricies. Nulla facilisi. Duis non sapien varius, commodo nulla vitae, venenatis ligula. Aliquam consequat, nisi vel rhoncus tempus, elit mi euismod urna, vel efficitur mauris dui eu magna.</p>
+  </div>
+
+  <h2>Our Team</h2>
+  <div class="team-members">
+    <div class="team-member">
+      <img src="team-member1.jpg" alt="Team Member 1">
+      <h3>John Doe</h3>
+      <p>CEO</p>
+    </div>
+    <div class="team-member">
+      <img src="team-member2.jpg" alt="Team Member 2">
+      <h3>Jane Smith</h3>
+      <p>Head Chef</p>
+    </div>
+    <div class="team-member">
+      <img src="team-member3.jpg" alt="Team Member 3">
+      <h3>Michael Johnson</h3>
+      <p>Marketing Manager</p>
+    </div>
+    <!-- Add more team members as needed -->
+  </div>
+</div>
+{% endblock body %}

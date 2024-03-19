@@ -1,0 +1,448 @@
+{% extends "base.html" %}
+{% block body %}
+<style>
+    /* Card Container */
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    /* Card */
+    .card {
+        width: 300px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    /* Card Image */
+    .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    /* Card Content */
+    .card-content {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .card-text {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 15px;
+    }
+
+    .card-price {
+        font-size: 1.1rem;
+        color: #17a2b8;
+    }
+    .food-showcase {
+        display: flex;
+        flex-wrap: wrap; /* Allow items to wrap to the next line */
+        justify-content: center; /* Center items horizontally */
+        gap: 20px; /* Add space between items */
+        padding: 20px;
+        background-color: #f9f9f9; /* Light background color */
+        border-radius: 10px;
+        animation: slideInLeft 1s ease;
+    }
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #17a2b8;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: transform 0.3s ease;
+    }
+
+    .btn:hover {
+        transform: scale(1.1);
+    }
+    /* Food Card */
+    .food-card {
+        max-width: 300px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: white;
+    }
+
+    .food-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .food-content {
+        padding: 15px;
+    }
+
+    .food-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .food-description {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 10px;
+    }
+
+    .food-price {
+        font-size: 1rem;
+        color: #17a2b8;
+        font-weight: bold;
+    }
+
+    .gesture {
+        font-size: 1rem;
+        color: #17a2b8; /* Gesture color */
+        font-style: italic;
+    }
+    .gesture {
+        font-size: 1rem;
+        color: #17a2b8; /* Gesture color */
+        font-style: italic;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+    }
+
+    /* Header */
+    header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+        color: #333;
+    }
+
+    /* Owner Section */
+    .owner-section {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 20px;
+        background-image: url('/static/tf5.jpeg'); /* Set background image */
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+    }
+
+    .owner-image {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid white; /* Add border for contrast */
+        margin: 0 auto 20px; /* Center image and add margin at the bottom */
+    }
+
+    .owner-name {
+        font-size: 1.5rem;
+        color: white;
+        margin-bottom: 10px;
+    }
+
+    .owner-description {
+        font-size: 1rem;
+        color: white;
+        margin-bottom: 20px;
+    }
+    /* Food Menu Container */
+    .menu-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-gap: 20px;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        animation: fadeInUp 1s ease;
+    }
+
+    /* Food Card */
+    .food-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: white;
+    }
+
+    .food-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .food-content {
+        padding: 15px;
+    }
+
+    .food-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    
+    .food-description {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 10px;
+    }
+    
+    .food-price {
+        font-size: 1rem;
+        color: #17a2b8;
+        font-weight: bold;
+    }
+    
+    /* Footer */
+    footer {
+        text-align: center;
+        margin-top: 40px;
+        padding: 20px 0;
+        background-color: #333;
+        color: white;
+    }
+    @keyframes slideInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }/* Additional CSS styles for the advertising div */
+.advertising-div {
+    display: flex; /* Use flexbox layout */
+    background-color: #f8f9fa; /* Light background color */
+    border: 1px solid #ced4da; /* Border color */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Add padding around content */
+    margin-bottom: 20px; /* Add space below the div */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+}
+
+.ad-image {
+    width: 150px; /* Adjust image width */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 20px; /* Add space between image and text */
+}
+
+.ad-text {
+    flex: 1; /* Take remaining space */
+    text-align: left; /* Left align text */
+}
+
+.ad-text h3 {
+    color: #007bff; /* Heading color */
+    margin-bottom: 10px; /* Add space below the heading */
+}
+
+.ad-text p {
+    color: #333; /* Text color */
+    margin-bottom: 15px; /* Add space below the paragraph */
+}
+
+.ad-text ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.ad-text li {
+    margin-bottom: 5px; /* Add space between list items */
+}
+
+.signup-button {
+    display: inline-block; /* Display as inline block */
+    padding: 10px 20px; /* Add padding to the button */
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    text-decoration: none; /* Remove underline from button text */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition on hover */
+}
+
+.signup-button:hover {
+    background-color: #0056b3; /* Darker background color on hover */
+}
+
+</style>
+<div class="container">
+    <header>
+        <h1>Welcome to Mr.AadityaMohit Portal</h1>
+        <p>Explore our delicious menu!</p>
+    </header>
+
+    <div class="owner-section" >
+        <img class="owner-image" src="/static/i4.jpeg" alt="Owner">
+        <h1 class="owner-name" style="color: white; background-color: black;">Aaditya_Mohit</h1>
+
+        <p class="owner-description" style="color: white; background-color: black;">Owner & Chef</p>
+        <p class="owner-description"style="color: white; background-color: black;">Passionate about serving the best food to our customers.</p>
+    </div>
+
+    <div class="menu-container">
+        <div class="food-card">
+            <img class="food-image" src="/static/choci.jpeg" alt="Food 1">
+            <div class="food-content">
+                <h2 class="food-title">CHilled-Choco Icecream</h2>
+                <p class="food-description">A mouthwatering choco_cream.</p>
+                <p>{{request.user}}, Favorite</p>
+                <p class="food-price">$50</p>
+                            <a href="/pureveg" class="btn">Order Now</a>
+            </div>
+        </div>
+        <!-- Place this code where you want to display the advertising div -->
+<!-- Updated HTML code for the advertising div -->
+
+<div class="advertising-div">
+    <img src="/static/user.jpeg" alt="Join Us Today" class="ad-image">
+    <div class="ad-text">
+        <h3>Join Us Today!</h3>
+        <p>Unlock a world of benefits:</p>
+        <ul>
+            <li>Exclusive discounts</li>
+            <li>Early access to new products</li>
+            <li>Personalized recommendations</li>
+        </ul>
+        <a href="{% url 'signup' %}" class="signup-button">Sign Up Now</a>
+    </div>
+</div>
+
+        <!-- Add more food cards here -->
+    </div>
+</div>
+
+
+
+<div class="card-container">
+    <div class="card">
+        <img src="/static/chwmn.jpeg" alt="Food 1">
+        <div class="card-content">
+            <h2 class="card-title">Hot-Spicy Noodles</h2>
+            <p class="card-text">want it ! Order it !.</p>
+            <p class="card-price">$20</p>
+                        <a href="/pureveg" class="btn">Order Now</a>
+        </div>
+    </div>
+    <div class="card">
+        <img src="/static/Pastery.jpeg" alt="Food 2">
+        <div class="card-content">
+            <h2 class="card-title">Pastery</h2>
+            
+      
+            <p class="card-price">$12</p>
+            <a href="/pureveg" class="btn">Order Now</a>
+        </div>
+    </div>
+    <div class="card">
+        <img src="/static/spl.jpeg" alt="Food 3">
+        <div class="card-content">
+            <h2 class="card-title">Our Special</h2>
+            <p class="card-text">Dive Here to have our special.</p>
+            <p class="card-price">$155</p>
+            <a href="/pureveg" class="btn">Order Now</a>
+        </div>
+    </div>
+    <!-- Add more cards for additional food items here -->
+</div>
+
+<div class="food-showcase">
+    <div class="food-card">
+        <img class="food-image" src="/static/burger.jpeg" alt="Food 1">
+        <div class="food-content">
+            <h2 class="food-title">Delicious Burger</h2>
+            <p class="food-description">A mouthwatering burger with juicy patty, fresh veggies, and cheese.</p>
+            <p class="gesture">Enjoy our special offer: Buy one, get one free! <b>$10</b></p>
+            <a href="/pureveg" class="btn">Order Now</a>
+        </div>
+    </div>
+    <div class="food-card">
+        <img class="food-image" src="/static/pizza.jpeg" alt="Food 2">
+        <div class="food-content">
+            <h2 class="food-title">Tasty Pizza</h2>
+            <p class="food-description">Authentic Italian pizza with a variety of toppings.</p>
+            <p class="gesture">Special deal: 20% off on all pizzas! <b>$10</b></p>
+
+            <a href="/pureveg" class="btn">Order Now</a>
+        </div>
+    </div>
+    <div class="food-card">
+        <img class="food-image" src="/static/pasta.jpeg" alt="Food 3">
+        <div class="food-content">
+            <h2 class="food-title">Scrumptious Pasta</h2>
+            <p class="food-description">Homemade pasta with rich tomato sauce and fresh basil.</p>
+            <p class="gesture">Don't miss our pasta night every Wednesday! <b>$10</b></p>
+
+            <a href="/pureveg" class="btn">Order Now</a>
+        </div>
+    </div>
+    <!-- Add more food cards as needed -->
+</div>
+
+<footer>
+    <p>&copy; 2024 My Restaurant. All rights reserved.</p>
+</footer>
+<script>
+    const slider = document.getElementById("slider");
+    let currentIndex = 0;
+    
+    function prev() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSliderPosition();
+        }
+    }
+    
+    function next() {
+        if (currentIndex < 3) { // Considering 6 items, displaying 3 at a time
+            currentIndex++;
+            updateSliderPosition();
+        }
+    }
+    
+    function updateSliderPosition() {
+        const newPosition = -currentIndex * 110 + "px"; // Adjust based on item width and margin
+        slider.style.transform = `translateX(${newPosition})`;
+    }
+    
+
+</script>
+{%endblock body%}

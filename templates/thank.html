@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block body %}
+<style>
+    .thank-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .thank-container img {
+        max-width: 100%;
+        height: auto;
+        margin-top: 10px; /* Adjust margin as needed */
+    }
+</style>
+
+<div class="thank-container">
+    <h2>Thank You for Your Order!</h2>
+    
+    <p>Your order will be delivered between 3-4 days.</p>
+</div>
+
+{% endblock body %}

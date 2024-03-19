@@ -1,0 +1,340 @@
+{% extends "base.html" %}
+{% block body %}
+<style>
+    /* Styles for Meat menu */
+    @keyframes fadeInOut {
+        0% { opacity: 0; }
+        25% { opacity: 1; }
+        75% { opacity: 1; }
+        100% { opacity: 0; }
+    }
+
+    .welcome-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .welcome-message {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-right: 20px;
+        animation: fadeInOut 4s linear infinite;
+    }
+
+    .animating-image {
+        width: 50px;
+        height: 50px;
+        background: url('/static/animating_image.gif') center center/contain no-repeat;
+        animation: spin 6s linear 1;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    .animating-image img {
+        width: 100%; /* Adjust the image width as needed */
+        height: auto; /* Maintain aspect ratio */
+    }
+    
+
+    .Meat-menu {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .Meat-dish {
+        width: 60%;
+    }
+
+    .side-cards {
+        width: 30%;
+    }
+
+    /* Meat dish section */
+    .Meat-dish .Meat {
+        margin-bottom: 10px; /* Reduced margin */
+    }
+
+    .Meat-dish .Meat img {
+        width: 40%;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        margin-left: 8vw;
+    }
+.side-cards{
+    width:87%
+}
+    /* Card for dish description */
+    .side-cards .card {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 8px; /* Further reduced padding */
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        margin-bottom: 200px; /* Reduced margin */
+    }
+
+    .side-cards .card h3 {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 8px; /* Further reduced margin */
+    }
+
+    .side-cards .card p {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 8px; /* Further reduced margin */
+    }
+    .order-button {
+        display: block;
+        width: 50%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        margin-top: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-align: center;
+    }
+
+    .order-button:hover {
+        background-color: #dc2100;
+    }
+    
+    .litti-chokha {
+        width: 70%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px;
+    }
+
+    .litti-chokha img {
+        width: 20%;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .lines {
+        width: 45%;
+        margin-left: 20px;
+    }
+
+    .lines p {
+        margin-bottom: 10px;
+    }
+
+
+    @media only screen and (max-width: 600px) {
+        .Meat-dish .Meat img{
+width:100%;
+        }
+
+        .side-cards .card{
+            margin-bottom: 15px;
+        }
+        }
+     
+        .litti-chokha {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .litti-chokha img {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+
+
+            h3{
+                margin-left: 8vw;
+            }     
+
+        
+
+    @media only screen and (max-width: 900px) {
+        .Meat-dish .Meat img {
+            width: 86%;
+            margin-left: 0vw;
+            margin-top: 5vw;
+        }
+        }
+        h3{
+            margin-left: 8vw;
+        }
+</style>
+<div class="welcome-container">
+    <div class="welcome-message">
+        Welcome to Non-Veg Ocean
+    </div>
+    <div class="animating-image"><img src="/static/c1.jpeg" alt="Animatimg Image"></div>
+</div>
+
+<div class="Meat-menu">
+    <div class="Meat-dish">
+        <div class="Meat">
+            <img src="/static/i5.jpeg" alt="Matar Meat">
+            <h3>Matar Meat</h3>
+            <p><b>Price: 600 rupees</b></p>
+        </div>
+        <div class="Meat">
+            <img src="/static/i6.jpeg" alt="Shahi Meat">
+            <h3>Shahi Meat</h3>
+            <p><b>Price: 600 rupees</b></p>
+        </div>
+    </div>
+
+    <div class="side-cards">
+        <div class="card">
+            <h3>Matar Meat</h3>
+            <p><b>Price: 600 rupees</b></p>
+            <p>Matar Meat is a delicious North Indian dish consisting of Meat (cottage cheese) and green peas cooked in a creamy tomato-based gravy.</p>
+          
+             <button class="order-button" onclick="window.location.href='/cashondelivery?name=Matar+meat&price=670&image=/static/i5.jpeg'">Order Now</button>
+        </div>
+        <div class="card">
+            <h3>Shahi Meat</h3>
+            <p><b>Price: 600 rupees</b></p>
+            <p>Shahi Meat is a rich and creamy dish made with Meat (cottage cheese) cooked in a luxurious gravy made of cashews, cream, and aromatic spices.</p>
+            
+             <button class="order-button" onclick="window.location.href='/cashondelivery?name=Shahi+Meat&price=600&image=/static/i1.jpeg'">Order Now</button>
+        </div>
+    </div>
+</div>
+<div class="Meat-menu">
+    <div class="Meat-dish">
+        <div class="Meat">
+            <img src="/static/c2.jpeg" alt="Matar Meat">
+            <h3>Matar Meat</h3>
+            <p><b>Price: 600 rupees</b></p>
+        </div>
+        <div class="Meat">
+            <img src="/static/c3.jpeg" alt="Shahi Meat">
+            <h3>Chicken Tikka Masala</h3>
+            <p><b>Price: 600 rupees</b></p>
+        </div>
+    </div>
+
+    <div class="side-cards">
+        <div class="card">
+            <p><b>Price: 600 rupees</b></p>
+            <p>Chicken Tikka Masala: Succulent pieces of chicken marinated in a blend of yogurt and spices, grilled to perfection, and served in a rich, creamy tomato-based sauce</p>
+          
+             <button class="order-button" onclick="window.location.href='/cashondelivery?name=chicken+tikka&price=430&image=/static/c3.jpeg'">Order Now</button>
+        </div>
+        <div class="card">
+            <h3>Butter Chicken </h3>
+            <p><b>Price: 600 rupees</b></p>
+            <p>Butter Chicken (Murgh Makhani): Tender chicken pieces simmered in a velvety smooth sauce made from butter, cream, tomatoes, and a medley of spices.</p>
+            
+             <button class="order-button" onclick="window.location.href='/cashondelivery?name=Butter+chicken&price=600&image=/static/i1.jpeg'">Order Now</button>
+        </div>
+    </div>
+</div>
+<div class="Meat-menu">
+    <div class="Meat-dish">
+        <div class="Meat">
+            <img src="/static/i5.jpeg" alt="Matar Meat">
+            <h3>Matar Meat</h3>
+            <p><b>Price: 600 rupees</b></p>
+        </div>
+        <div class="Meat">
+            <img src="/static/i6.jpeg" alt="Shahi Meat">
+            <h3>Chicken Biryani</h3>
+            <p><b>Price: 600 rupees</b></p>
+        </div>
+    </div>
+
+    <div class="side-cards">
+        <div class="card">
+            <h3>Chicken Biryanit</h3>
+            <p><b>Price: 600 rupees</b></p>
+            <p>Chicken Biryani: Fragrant long-grain basmati rice layered with marinated chicken, caramelized onions, aromatic spices, and fresh herbs, all cooked together in a sealed pot to perfection. This one-pot wonder is a beloved dish across India, celebrated for its exquisite taste and irresistible aroma..</p>
+          
+             <button class="order-button" onclick="window.location.href='/cashondelivery?name=Spicy+Matar+Paneer&price=600&image=/static/i6.jpeg'">Order Now</button>
+        </div>
+        <div class="card">
+            <h3>Shahi Meat</h3>
+            <p><b>Price: 650 rupees</b></p>
+            <p>Shahi Meat is a rich and creamy dish made with Meat (cottage cheese) cooked in a luxurious gravy made of cashews, cream, and aromatic spices.</p>
+            
+             <button class="order-button" onclick="window.location.href='/cashondelivery?name=Shahi+Meat&price=650&image=/static/i1.jpeg'">Order Now</button>
+        </div>
+    </div>
+</div>
+<div class="Meat-menu">
+    <div class="Meat-dish">
+        <div class="Meat">
+            <img src="/static/i5.jpeg" alt="Matar Meat">
+            <h3>Matar Meat</h3>
+            <p><b>Price: 600 rupees</b></p>
+        </div>
+        <div class="Meat">
+            <img src="/static/i6.jpeg" alt="Shahi Meat">
+            <h3>Shahi Meat</h3>
+        </div>
+    </div>
+
+    <div class="side-cards">
+        <div class="card">
+            <h3>Matar Meat</h3>
+            <p><b>Price: 590 rupees</b></p>
+            <p>Matar Meat is a delicious North Indian dish consisting of Meat (cottage cheese) and green peas cooked in a creamy tomato-based gravy.</p>
+          
+             <button class="order-button" onclick="window.location.href='/cashondelivery?name=shahi+meat&price=590&image=/static/i5.jpeg'">Order Now</button>
+        </div>
+        <div class="card">
+            <h3>Shahi Meat</h3>
+            <p><b>Price: 600 rupees</b></p>
+            <p>Shahi Meat is a rich and creamy dish made with Meat (cottage cheese) cooked in a luxurious gravy made of cashews, cream, and aromatic spices.</p>
+            
+            <button class="order-button" onclick="window.location.href='/cashondelivery?name=shahi+meat&price=590&image=/static/i5.jpeg'">Order Now</button>
+        </div>
+    </div>
+</div>
+<div class="Meat-menu">
+    <div class="Meat-dish">
+        <div class="Meat">
+            <img src="/static/i5.jpeg" alt="Matar Meat">
+            <h3>Matar Meat</h3>
+            <p><b>Price: 600 rupees</b></p>
+        </div>
+        <div class="Meat">
+            <img src="/static/i6.jpeg" alt="Shahi Meat">
+            <h3>Shahi Meat</h3>
+            <p><b>Price: 600 rupees</b></p>
+        </div>
+    </div>
+
+    <div class="side-cards">
+        <div class="card">
+            <h3>Matar Meat</h3>
+            <p><b>Price: 600 rupees</b></p>
+            <p>Matar Meat is a delicious North Indian dish consisting of Meat (cottage cheese) and green peas cooked in a creamy tomato-based gravy.</p>
+          
+            <button class="order-button" onclick="window.location.href='/cashondelivery?name=shahi+meat&price=600&image=/static/i5.jpeg'">Order Now</button>
+        </div>
+        <div class="card">
+            <h3>Shahi Meat</h3>
+            <p><b>Price: 600 rupees</b></p>
+            <p>Shahi Meat is a rich and creamy dish made with Meat (cottage cheese) cooked in a luxurious gravy made of cashews, cream, and aromatic spices.</p>
+            
+            <button class="order-button" onclick="window.location.href='/cashondelivery?name=shahi+meat&price=600&image=/static/i5.jpeg'">Order Now</button>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

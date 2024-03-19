@@ -1,0 +1,323 @@
+{% extends "base.html" %}
+{% block body %}
+<style>
+    /* Styles for paneer menu */
+    @keyframes fadeInOut {
+        0% { opacity: 0; }
+        25% { opacity: 1; }
+        75% { opacity: 1; }
+        100% { opacity: 0; }
+    }
+    .animating-image img {
+        width: 100%; /* Adjust the image width as needed */
+        height: auto; /* Maintain aspect ratio */
+    }
+    .welcome-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .welcome-message {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-right: 20px;
+        animation: fadeInOut 4s linear infinite;
+    }
+
+    .animating-image {
+        width: 100px;
+        height: 100px;
+        animation: spin 6s linear 1;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .paneer-menu {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .paneer-dish {
+        width: 60%;
+    }
+
+    .side-cards {
+        width: 30%;
+    }
+
+    /* Paneer dish section */
+    .paneer-dish .paneer {
+        margin-bottom: 10px; /* Reduced margin */
+    }
+
+    .paneer-dish .paneer img {
+        width: 40%;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        margin-left: 8vw;
+    }
+.side-cards{
+    width:87%
+}
+    /* Card for dish description */
+    .side-cards .card {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 8px; /* Further reduced padding */
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        margin-bottom: 200px; /* Reduced margin */
+    }
+
+    .side-cards .card h3 {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 8px; /* Further reduced margin */
+    }
+
+    .side-cards .card p {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 8px; /* Further reduced margin */
+    }
+    .order-button {
+        display: block;
+        width: 50%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        margin-top: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-align: center;
+    }
+
+    .order-button:hover {
+        background-color: #dc2100;
+    }
+    
+    .litti-chokha {
+        width: 70%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px;
+    }
+
+    .litti-chokha img {
+        width: 20%;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .lines {
+        width: 45%;
+        margin-left: 20px;
+    }
+
+    .lines p {
+        margin-bottom: 10px;
+    }
+
+
+    @media only screen and (max-width: 600px) {
+        .paneer-dish .paneer img{
+width:100%;
+        }
+
+        .side-cards .card{
+            margin-bottom: 15px;
+        }
+        }
+     
+        .litti-chokha {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .litti-chokha img {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+
+
+            h3{
+                margin-left: 8vw;
+            }     
+
+        
+
+    @media only screen and (max-width: 900px) {
+        .paneer-dish .paneer img {
+            width: 86%;
+            margin-left: 0vw;
+            margin-top: 5vw;
+        }
+        }
+        h3{
+            margin-left: 8vw;
+        }
+</style>
+<div class="welcome-container">
+    <div class="welcome-message">
+        Welcome to Pure Veg Dishes
+        <p> <span class="user-name"> {{request.user}}- Favorite</span>!</p>
+    </div>
+    <div class="animating-image"><img src="/static/i4.jpeg" alt="Animatimg Image"></div>
+</div>
+<div class="paneer-menu">
+    <div class="paneer-dish">
+        <div class="paneer">
+            <img src="/static/i1.jpeg" alt="Matar Paneer">
+            <h3>Spicy Matar Paneer</h3> <!-- Changed name -->
+            <p><b>Price: 500 rupees</b></p>
+        </div>
+        <div class="paneer">
+            <img src="/static/i2.jpeg" alt="Shahi Paneer">
+            <h3>Royal Shahi Paneer</h3> <!-- Changed name -->
+            <p><b>Price: 500 rupees</b></p>
+        </div>
+    </div>
+
+    <div class="side-cards">
+        <div class="card">
+            <h3>Delicious Matar Masala</h3> <!-- Changed name -->
+            <p><b>Price: 900 rupees</b></p>
+            <p>Matar masala is a delicious North Indian dish consisting of masala (cottage cheese) and green peas cooked in a creamy tomato-based gravy.</p>
+          
+             <!-- Example button with price 500 -->
+<button class="order-button" onclick="window.location.href='/cashondelivery?name=Matar+Masala&price=900&image=/static/i2.jpeg'">Order Now</button>
+
+        </div>
+        <div class="card">
+            <h3>Exotic Shahi Biryani</h3> <!-- Changed name -->
+            <p><b>Price: 490 rupees</b></p>
+            <p>Shahi Biryani is a rich and creamy dish made with Biryani (cottage cheese) cooked in a luxurious gravy made of cashews, cream, and aromatic spices.</p>
+            
+             <!-- Example button with price 500 -->
+             <button class="order-button" onclick="window.location.href='/cashondelivery?name=Exotic+shahi+Biryani&price=490&image=/static/vegbir.jpeg'">Order Now</button>
+        </div>
+    </div>
+</div>
+
+<div class="paneer-menu">
+    <div class="paneer-dish">
+        <div class="paneer">
+            <img src="/static/v1.jpeg" alt="Matar Paneer">
+            <h3>Matar Paneer</h3>
+            <p><b>Price: 500 rupees</b></p>
+        </div>
+        <div class="paneer">
+            <img src="/static/burger.jpeg" alt="Shahi Paneer">
+            <h3>BURGER</h3>
+            <p><b>Price: 500 rupees</b></p>
+            <button class="order-button" onclick="window.location.href='/cashondelivery?name=Burgerr&price=900&image=/static/burger.jpeg'">Order Now</button>
+
+        </div>
+    </div>
+
+    <div class="side-cards">
+        <div class="card">
+            <h3>Matar Paneer</h3>
+            <p><b>Price: 500 rupees</b></p>
+            <p>Matar Paneer is a delicious North Indian dish consisting of paneer (cottage cheese) and green peas cooked in a creamy tomato-based gravy.</p>
+          
+             <!-- Example button with price 500 -->
+             <button class="order-button" onclick="window.location.href='/cashondelivery?name=Spicy+Matar+Paneer&price=50&image=/static/i1.jpeg'">Order Now</button>
+
+        </div>
+        <div class="card">
+            <h3>Shahi Paneer</h3>
+            <p><b>Price: 580 rupees</b></p>
+            <p>Shahi Paneer is a rich and creamy dish made with paneer (cottage cheese) cooked in a luxurious gravy made of cashews, cream, and aromatic spices.</p>
+            
+             <!-- Example button with price 500 -->
+             <button class="order-button" onclick="window.location.href='/cashondelivery?name=Spicy+Matar+Paneer&price=580&image=/static/i2.jpeg'">Order Now</button>
+
+        </div>
+    </div>
+</div>
+<div class="paneer-menu">
+    <div class="paneer-dish">
+        <div class="paneer">
+            <img src="/static/pasta.jpeg" alt="Matar Paneer">
+            <h3>Matar Paneer</h3>
+            <p><b>Price: 500 rupees</b></p>
+        </div>
+        <div class="paneer">
+            <img src="/static/i2.jpeg" alt="Shahi Paneer">
+            <h3>Shahi Paneer</h3>
+        </div>
+    </div>
+
+    <div class="side-cards">
+        <div class="card">
+            <h3>Matar Paneer</h3>
+            <p><b>Price: 500 rupees</b></p>
+            <p>Matar Paneer is a delicious North Indian dish consisting of paneer (cottage cheese) and green peas cooked in a creamy tomato-based gravy.</p>
+          
+             <!-- Example button with price 500 -->
+             <button class="order-button" onclick="window.location.href='/cashondelivery?name=Spicy+Matar+Paneer&price=500&image=/static/i1.jpeg'">Order Now</button>
+        </div>
+        <div class="card">
+            <h3>Shahi Paneer</h3>
+            <p><b>Price: 500 rupees</b></p>
+            <p>Shahi Paneer is a rich and creamy dish made with paneer (cottage cheese) cooked in a luxurious gravy made of cashews, cream, and aromatic spices.</p>
+            
+             <!-- Example button with price 500 -->
+             <button class="order-button" onclick="window.location.href='/cashondelivery?name=Spicy+Matar+Paneer&price=500&image=/static/i1.jpeg'">Order Now</button>
+
+        </div>
+    </div>
+</div>
+<div class="paneer-menu">
+    <div class="paneer-dish">
+        <div class="paneer">
+            <img src="/static/i1.jpeg" alt="Matar Paneer">
+            <h3>Matar Paneer</h3>
+            <p><b>Price: 500 rupees</b></p>
+        </div>
+        <div class="paneer">
+            <img src="/static/i2.jpeg" alt="Shahi Paneer">
+            <h3>Shahi Paneer</h3>
+            <p><b>Price: 500 rupees</b></p>
+        </div>
+    </div>
+
+    <div class="side-cards">
+        <div class="card">
+            <h3>Matar Paneer</h3>
+            <p><b>Price: 500 rupees</b></p>
+            <p>Matar Paneer is a delicious North Indian dish consisting of paneer (cottage cheese) and green peas cooked in a creamy tomato-based gravy.</p>
+          
+             <!-- Example button with price 500 -->
+             <button class="order-button" onclick="window.location.href='/cashondelivery?name=Spicy+Matar+Paneer&price=500&image=/static/i1.jpeg'">Order Now</button>
+
+        </div>
+        <div class="card">
+            <h3>Shahi Paneer</h3>
+            <p><b>Price: 500 rupees</b></p>
+            <p>Shahi Paneer is a rich and creamy dish made with paneer (cottage cheese) cooked in a luxurious gravy made of cashews, cream, and aromatic spices.</p>
+            
+             <!-- Example button with price 500 -->
+             <button class="order-button" onclick="window.location.href='/cashondelivery?name=Spicy+Matar+Paneer&price=500&image=/static/i1.jpeg'">Order Now</button>
+
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
